@@ -1,0 +1,8 @@
+django-admin.py startproject connectedin (Criar um projeto chamado connectedin)
+python manage.py migrate (Prepara um banco de dados para a aplicação utilizando o SQLite)
+python manage.py runserver (Roda a aplicação web, padrão em http://127.0.0.1:8000/)
+Você pode alterar a porta pelo mesmo comando - python manage.py runserver 8080
+
+python manage.py startapp perfis (Cria uma aplicação chamada perfis dentro do projeto connectedin)
+Após a criação da aplicação é necessário registrar a aplica no Django no arquivo settings.py -> INTALLED_APPS -> Informar a plicação 'perfis'.
+
