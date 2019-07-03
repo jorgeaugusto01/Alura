@@ -1,11 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
-from perfis import views
+from . import views
 
 urlpatterns = [
-    
     path('', views.index, name='index'),
-    include(perfis.urls)
+    path('<int:perfil_id>/', views.exibir, name='exibir'),
     
 ]
