@@ -7,5 +7,11 @@ class Perfil(models.Model):
     telefone = models.CharField(max_length=15, null=False)
     nome_empresa = models.CharField(max_length=255, null=False)
 
+    def convidar(self, perfil_convidado):
+        Convite(solicitante=self, convidado=perfil_convidado).save()
 
+class Convite(models.Model):
+    #related_name adiciona os atributos na classe perfil
+    solicitante = models.ForeignKey(Perfil, related_name='convites_feitos', on_delete=models.PROTECT)
+    convidado = models.ForeignKey(Perfil, related_name='convites_recebidos',on_delete=models.PROTECT)
     
