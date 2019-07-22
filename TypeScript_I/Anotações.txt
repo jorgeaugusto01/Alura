@@ -1,0 +1,95 @@
+Instalação do TypeScript
+    1 - Precisa do Node.js instalado. Linux (sudo apt-get install -y nodejs)
+    
+    2 - Dentro da pasta da aplicação, no terminal, após o node instalado, digtar 'npm init', 
+    o qual  irá criar o arquivo package.json que nada mais é do que uma "caderneta" na qual 
+    temos registrados todos os módulos da aplicação baixados pelo npm.
+    
+    3 - Agora que temos nosso arquivo criado, vamos solicitar ao npm que instale o TypeScript para nós:
+        npm install typescript@2.3.2 --save-dev - Dentro de instantes ele será instalado dentro da pasta alurabank/node_modules
+
+    4 - O arquivo tsconfig.json:
+        precisamos criar o arquivo alurabank/tsconfig.json que guardará as configurações do nosso compilador.
+        Tem a seguinte estrutura:
+
+        {
+            "compilerOptions": {
+                "target": "es6",
+                "outDir": "app/js"
+            },
+            "include": [
+                "app/ts/**/*"
+            ]
+        }    
+        Nele, indicamos em compilerOptions as configurações do compilador. No caso, indicamos que o resultado final da compilação será um código compatível com es6 e que eles ficarão dentro da pasta app/js. Por fim, em include, indicamos o local onde o compilador deve buscar seus arquivos.
+        Uma boa prática é criarmos um script em nosso package.json que se encarregará de chamá-lo para nós através do terminal.
+        Vamos alterar alurabank/package.json e adicionarmos o script:
+            "compile": "tsc"
+
+        Nosso package.json ficará assim:
+
+        {
+            "name": "alurabank",
+            "version": "1.0.0",
+            "description": "",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1",
+                "compile": "tsc"
+        },
+            "author": "",
+            "license": "ISC",
+            "devDependencies": {
+                "typescript": "^2.3.2"
+            }
+        }
+
+        Feche e abra o VSCode para que ele possa levar em consideração as configurações que realizamos no compilador.
+        Agora, através do terminal, ainda dentro da pasta alurabank faremos:
+            - npm run compile
+
+    
+    5 - Automatização do procesos de compilação:
+        Para isso, vamos adicionar mais um script em alurabank/package.json, o script "start": "tsc -w":
+
+        {
+            "name": "alurabank",
+            "version": "1.0.0",
+            "description": "",
+            "main": "index.js",
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1",
+                "compile": "tsc",
+                "start": "tsc -w"
+        },
+            "author": "",
+            "license": "ISC",
+            "devDependencies": {
+                "typescript": "^2.3.2"
+            }
+        }
+
+        Agora, no terminal e dentro da pasta do projeto, vamos executar o comando:
+            npm start
+            - O terminal ficará travado pois o serviço de monitoramento de arquivos do TypeScript terá entrado em ação.
+
+    6 - No npm, existe uma série de TypeScript definitons files para as mais diversas bibliotecas e frameworks do mercado. Por exemplo, se quisermos instalar o tsd do jQuery, acessamos
+        https://www.npmjs.com/package/@types/jquery
+
+        Se quisermos do lodash ou underscore acessamos
+        https://www.npmjs.com/package/@types/lodash
+        https://www.npmjs.com/package/@types/underscore   
+
+        essa forma, antes de sair buscando pela internet os arquivos tsd que precisamos, podemos tentar a sorte executando o comando:
+
+        npm install @types/nomeDaLibOuFramework --save-dev
+        Nesse sentido, se quisermos instalar os tsd das três bibliotecas que foram citadas, fazemos:
+
+        npm install @types/jquery --save-dev
+        npm install @types/loadash --save-dev
+        npm install @types/underscore --save-dev
+        Qualquer tsd files que esteja dentro de node_modules/@types será lidado automaticamente pelo compilador do TypeScript.
+        É preciso se conformar quando não houver do Typing para sua biblioteca preferida, neste caso, a estratégia do declare var que vimos neste treinamento é uma saída, não muito ideal, mas que permitirá seu código compilar até que você encontre seu tsd.         
+
+    7 - "removeComments": true no arquivo tsconfig.json.
+        Não transpila os comentário nos arquivos .ts nos arquivos .js.

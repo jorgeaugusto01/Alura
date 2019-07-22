@@ -2,8 +2,8 @@
     "compilerOptions": {
         "target": "es6",
         "outDir": "app/js",
-        "noEmitOnError": true,
-        "noImplicitAny": true
+        "noEmitOnError": true, //Não permite 
+        "noImplicitAny": true //Não aceita o tipo implícito 'any' como tipo de objeto. Será necessáio explicitar a tipagem dos objetos.
     },
     "include": [
         "app/ts/**/*"
