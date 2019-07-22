@@ -1,8 +1,9 @@
 1 - Instalação 
-    npm install -g create-react-app 
-    O -g gera uma instalação global na sua máquina. Mas vc pode entrar na pasta do projeto e instalar somente no projeto.
+    npm install create-react-app 
+    O npm install -g gera uma instalação global na sua máquina. Mas vc pode entrar na pasta do projeto e instalar somente no projeto.
 
     Então na pasta do projeto digitar: ./node_modules/.bin/create-react-app 'nome da aplicação'. 
     Estamos fazendo desta forma, porque não fizemos a instalação global. Se o -g foi usado anteriormente, você rodará apenas o create-react-app.
 
-2 - 
+2 - Após rodar os comando acima entrar na pasta do projeto e digitar:
+    npm start e virifcar se a aplicação vai subir.
