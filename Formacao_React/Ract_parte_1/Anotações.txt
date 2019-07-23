@@ -7,3 +7,5 @@
 
 2 - Após rodar os comando acima entrar na pasta do projeto e digitar:
     npm start e virifcar se a aplicação vai subir.
+
+3 - Usaremos um projeto que tem vários CSS prontos, chamado Pure CSS - mais simples que o Bootstrap.
